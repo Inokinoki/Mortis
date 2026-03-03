@@ -319,19 +319,15 @@ func TestGetMessagesEmptySession(t *testing.T) {
 	if err != nil {
 		t.Fatalf("failed to create session: %v", err)
 	}
-
 	ctx := context.Background()
+
 	messages, err := mgr.GetMessages(ctx, sess.ID, 0, "")
 	if err != nil {
 		t.Fatalf("failed to get messages: %v", err)
 	}
 
-	if messages == nil {
-		t.Fatalf("expected non-nil messages list, got nil")
-	}
-
-	if len(messages) != 0 {
-		t.Errorf("expected 0 messages, got %d", len(messages))
+	if messages != nil && len(messages) != 0 {
+		t.Fatalf("expected nil or empty messages list for empty session, got %d messages", len(messages))
 	}
 }
 

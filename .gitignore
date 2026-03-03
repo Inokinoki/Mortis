@@ -1,0 +1,47 @@
+# Binaries
+mortis
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go workspace file
+go.work
+
+# Dependency directories
+vendor/
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Dependency directories
+vendor/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.Thumbs.db
+
+# Config and data
+.mortis/
+*.toml
+!mortis.toml.example
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local

@@ -1,0 +1,86 @@
+{
+  "server": {
+    "host": "127.0.0.1",
+    "port": 13131,
+    "tlsDisabled": true,
+    "certFile": "",
+    "keyFile": "",
+    "readTimeout": 30,
+    "writeTimeout": 30
+  },
+  "auth": {
+    "disabled": true,
+    "passwordHash": "",
+    "sessionToken": "",
+    "apiKeys": [],
+    "passkeys": []
+  },
+  "gateway": {
+    "name": "Mortis",
+    "emoji": "🤖",
+    "defaultSessionId": "default",
+    "defaultProvider": "openai",
+    "defaultModel": "gpt-4o",
+    "agentTimeout": 600,
+    "maxToolIterations": 25,
+    "messageQueueMode": "followup",
+    "toolResultSanitizationLimit": 524288
+  },
+  "database": {
+    "path": "~/.mortis/mortis.db",
+    "pragmaPath": "~/.mortis/pragmas"
+  },
+  "providers": {
+    "openai": {
+      "type": "openai",
+      "apiKey": "sk-...",
+      "baseUrl": "",
+      "model": "gpt-4o",
+      "models": ["gpt-4o", "gpt-4o-mini", "o1-preview"],
+      "enabled": true
+    },
+    "anthropic": {
+      "type": "anthropic",
+      "apiKey": "sk-ant-...",
+      "model": "claude-sonnet-4-20250514",
+      "models": ["claude-sonnet-4-20250514", "claude-3-haiku-20250318", "claude-3-opus-20250229"],
+      "enabled": true
+    },
+    "local": {
+      "type": "local",
+      "baseUrl": "",
+      "model": "llama3.2",
+      "models": ["llama3.2", "mistral-nemo", "codellama"],
+      "enabled": false
+    }
+  },
+  "session": {
+    "dataDir": "~/.mortis/sessions",
+    "autoCompactEnabled": true,
+    "compactThreshold": 0.95,
+    "historyLimit": 200
+  },
+  "tools": {
+    "exec": {
+      "enabled": true,
+      "sandbox": {
+        "backend": "disabled",
+        "baseImage": "ubuntu:25.10",
+        "packages": ["curl", "jq"]
+      }
+    },
+    "webFetch": {
+      "enabled": true,
+      "timeout": 30,
+      "blockedDomains": []
+    }
+  },
+  "memory": {
+    "enabled": true,
+    "provider": "sqlite",
+    "dataDir": "~/.mortis/memory",
+    "embeddingModel": "",
+    "chunkSize": 512,
+    "chunkOverlap": 64
+  }
+}
