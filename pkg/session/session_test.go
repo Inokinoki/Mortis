@@ -574,11 +574,11 @@ func TestMultipleManagers(t *testing.T) {
 	mgr1 := NewManager(tmpDir1)
 	mgr2 := NewManager(tmpDir2)
 
-	sess1ID, _ := mgr1.Create("session-1", "gpt-4o", "openai")
-	sess2ID, _ := mgr2.Create("session-2", "claude-3", "anthropic")
+	sess1, _ := mgr1.Create("session-1", "gpt-4o", "openai")
+	sess2, _ := mgr2.Create("session-2", "claude-3", "anthropic")
 
-	_, ok1 := mgr1.Get(sess1ID)
-	_, ok2 := mgr2.Get(sess1ID)
+	_, ok1 := mgr1.Get(sess1.ID)
+	_, ok2 := mgr2.Get(sess1.ID)
 
 	if !ok1 {
 		t.Error("mgr1 should have session-1")
@@ -588,8 +588,8 @@ func TestMultipleManagers(t *testing.T) {
 		t.Error("mgr2 should not have session-1 (different manager)")
 	}
 
-	_, ok1 = mgr2.Get(sess2ID)
-	_, ok2 = mgr1.Get(sess2ID)
+	_, ok1 = mgr2.Get(sess2.ID)
+	_, ok2 = mgr1.Get(sess2.ID)
 
 	if !ok1 {
 		t.Error("mgr2 should have session-2")
